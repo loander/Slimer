@@ -1,0 +1,179 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2bet67vv5nre"]
+
+[ext_resource type="Texture2D" uid="uid://nc8c7a23cd2x" path="res://Resources/World/landmass.png" id="1_1fxwa"]
+[ext_resource type="Script" path="res://Scenes/landmass.gd" id="2_47062"]
+[ext_resource type="Texture2D" uid="uid://twrqu50di5jn" path="res://Resources/World/floaty.png" id="2_r5lkr"]
+[ext_resource type="Texture2D" uid="uid://d12svdg3atd7o" path="res://Resources/World/floaty2.png" id="3_xp77q"]
+[ext_resource type="Texture2D" uid="uid://cq3ajdttf5qhk" path="res://Resources/World/floaty1.png" id="4_tjt81"]
+
+[sub_resource type="Animation" id="Animation_vks3x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(136.75, 180.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Floaty3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11.1207, 151.804)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Floaty:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(86.2471, 94.0654)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Floaty1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(570.615, 388.531)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Floaty4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(39.7874, 915.875)]
+}
+
+[sub_resource type="Animation" id="Animation_k85t5"]
+resource_name = "float"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(136.75, 180.25), Vector2(136.75, 188.25), Vector2(136.75, 180.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Floaty3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(11.1207, 151.804), Vector2(11.121, 156.804), Vector2(11.1207, 151.804)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Floaty:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(86.2471, 94.0654), Vector2(86.247, 80), Vector2(86.2471, 94.0654)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Floaty1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(570.615, 388.531), Vector2(570.615, 370.531), Vector2(570.615, 388.531)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Floaty4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(39.7874, 915.875), Vector2(39.787, 900.875), Vector2(39.7874, 915.875)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ff2or"]
+_data = {
+"RESET": SubResource("Animation_vks3x"),
+"float": SubResource("Animation_k85t5")
+}
+
+[node name="Landmass" type="Sprite2D"]
+position = Vector2(136.75, 180.25)
+scale = Vector2(1.01163, 1.03917)
+texture = ExtResource("1_1fxwa")
+script = ExtResource("2_47062")
+
+[node name="Floaty" type="Sprite2D" parent="."]
+position = Vector2(86.2471, 94.0654)
+texture = ExtResource("2_r5lkr")
+
+[node name="Floaty2" type="Sprite2D" parent="."]
+position = Vector2(-59.0632, 118.123)
+texture = ExtResource("2_r5lkr")
+
+[node name="Floaty3" type="Sprite2D" parent="."]
+position = Vector2(11.1207, 151.804)
+texture = ExtResource("3_xp77q")
+
+[node name="Landmass" type="Sprite2D" parent="."]
+position = Vector2(614.109, 1154.53)
+scale = Vector2(1.81034, 1.81034)
+texture = ExtResource("1_1fxwa")
+
+[node name="Floaty4" type="Sprite2D" parent="."]
+position = Vector2(39.7874, 915.875)
+scale = Vector2(2.84982, 2.84982)
+texture = ExtResource("2_r5lkr")
+
+[node name="Floaty1" type="Sprite2D" parent="."]
+position = Vector2(570.615, 388.531)
+scale = Vector2(2.11251, 2.11251)
+texture = ExtResource("4_tjt81")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ff2or")
+}

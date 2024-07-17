@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1xijufcdydpx"]
+
+[ext_resource type="Script" path="res://Resources/Slimes/Player/playerchar.gd" id="1_81mwi"]
+[ext_resource type="Texture2D" uid="uid://bl15y01cn3nui" path="res://Resources/Slimes/Gray Slime Spritesheet-export.png" id="2_c1mal"]
+[ext_resource type="Script" path="res://Resources/Slimes/Player/Sprite2D.gd" id="3_oq7dm"]
+
+[sub_resource type="Animation" id="Animation_q8r7e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [50]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_ueakw"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_xty7e"]
+resource_name = "jump"
+length = 0.225
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [50, 51, 52, 53, 54, 55, 56, 57, 58, 51]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -2), Vector2(0, -2), Vector2(0, -33), Vector2(0, -63), Vector2(0, -81), Vector2(0, -61), Vector2(0, -36), Vector2(0, -1), Vector2(0, -1), Vector2(0, -1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ftfkm"]
+_data = {
+"RESET": SubResource("Animation_q8r7e"),
+"idle": SubResource("Animation_ueakw"),
+"jump": SubResource("Animation_xty7e")
+}
+
+[node name="player" type="RigidBody2D"]
+mass = 10.0
+gravity_scale = 1.5
+script = ExtResource("1_81mwi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -128)
+scale = Vector2(8, 8)
+texture = ExtResource("2_c1mal")
+hframes = 10
+vframes = 6
+frame = 50
+script = ExtResource("3_oq7dm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -2)
+polygon = PackedVector2Array(40, 0, -40, 0, -56, -16, -48, -56, -40, -72, -24, -88, 0, -96, 24, -88, 40, -72, 48, -56, 56, -16)
+
+[node name="animpl" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ftfkm")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.225
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

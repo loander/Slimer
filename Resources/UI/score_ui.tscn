@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckit2i3mymxbj"]
+
+[ext_resource type="Script" path="res://Resources/UI/ScoreUI.gd" id="1_c87m2"]
+
+[node name="ScoreUI" type="CanvasLayer"]
+layer = 0
+script = ExtResource("1_c87m2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="sctxt" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "S:"
+
+[node name="CScore" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="sctxt" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "HS:"
+
+[node name="HScore" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "0"

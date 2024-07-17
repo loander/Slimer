@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhyn854ioae58"]
+
+[ext_resource type="Script" path="res://Resources/UI/Lost.gd" id="1_augr6"]
+[ext_resource type="Shader" path="res://Resources/UI/pause_menu.gdshader" id="1_j7j64"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ikjg"]
+shader = ExtResource("1_j7j64")
+shader_parameter/amount = 2.5
+
+[node name="Lost" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_augr6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6ikjg")
+layout_mode = 0
+offset_left = -16958.0
+offset_top = -15420.0
+offset_right = 20471.0
+offset_bottom = 14856.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "You Lost!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="dnc" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Score "
+
+[node name="LostScore" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "0"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Restart2" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Restart"
+
+[node name="Quit2" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Restart2" to="." method="_on_restart_2_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit2" to="." method="_on_quit_2_pressed"]

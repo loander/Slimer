@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8wjuqqyjgtkr"]
+
+[ext_resource type="Texture2D" uid="uid://b8a7pymhf1845" path="res://Resources/Boulders/Boulder.png" id="1_04gj7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ptljs"]
+rough = true
+bounce = 1.0
+
+[sub_resource type="GDScript" id="GDScript_n4lmr"]
+script/source = "extends RigidBody2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+
+
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v5e0f"]
+radius = 31.0161
+
+[node name="Boulder" type="RigidBody2D"]
+mass = 0.6
+physics_material_override = SubResource("PhysicsMaterial_ptljs")
+gravity_scale = 0.85
+script = SubResource("GDScript_n4lmr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v5e0f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(4.13333, 4.14286)
+texture = ExtResource("1_04gj7")

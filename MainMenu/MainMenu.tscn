@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://bo623cnfrt623"]
+
+[ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_buail"]
+[ext_resource type="Texture2D" uid="uid://bu1vu0blh7l04" path="res://Resources/World/sky.png" id="1_ml8n6"]
+[ext_resource type="Script" path="res://Scenes/ParallaxLayer.gd" id="2_h6k60"]
+[ext_resource type="Texture2D" uid="uid://w604keypx4y8" path="res://Resources/World/clouds.png" id="3_nrqwv"]
+[ext_resource type="Texture2D" uid="uid://bgqu0eq4sqgvf" path="res://Resources/World/far-grounds.png" id="4_3rutl"]
+[ext_resource type="PackedScene" uid="uid://b1xijufcdydpx" path="res://Resources/Slimes/Player/playerchar.tscn" id="6_rtovy"]
+[ext_resource type="PackedScene" uid="uid://beh8omgheky4n" path="res://MainMenu/mmUI.tscn" id="7_11g37"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epbpl"]
+size = Vector2(1152, 241)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lthht"]
+size = Vector2(901, 1082)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4eba"]
+size = Vector2(1217.5, 1088)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5xxp"]
+size = Vector2(1099, 899.5)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_buail")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+process_mode = 3
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sky" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(540, 1200)
+scale = Vector2(9.64286, 7.89474)
+texture = ExtResource("1_ml8n6")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(8.75, 8.75)
+motion_mirroring = Vector2(4715, 0)
+script = ExtResource("2_h6k60")
+
+[node name="Clouds" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(2378, 1383)
+scale = Vector2(8.75031, 8.61229)
+texture = ExtResource("3_nrqwv")
+
+[node name="Far-grounds" type="Sprite2D" parent="."]
+position = Vector2(861, 2112)
+scale = Vector2(5.24545, 5.24545)
+texture = ExtResource("4_3rutl")
+
+[node name="base3" type="StaticBody2D" parent="."]
+position = Vector2(310, 590)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="base3"]
+position = Vector2(241, 1690)
+shape = SubResource("RectangleShape2D_epbpl")
+
+[node name="base" type="StaticBody2D" parent="."]
+position = Vector2(155, 295)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="base"]
+position = Vector2(-126.5, 1562)
+shape = SubResource("RectangleShape2D_lthht")
+
+[node name="base2" type="StaticBody2D" parent="."]
+position = Vector2(155, 295)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="base2"]
+position = Vector2(1049.75, 1558)
+shape = SubResource("RectangleShape2D_j4eba")
+
+[node name="base4" type="StaticBody2D" parent="."]
+position = Vector2(310, 590)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="base4"]
+position = Vector2(236, 1020.25)
+shape = SubResource("RectangleShape2D_h5xxp")
+
+[node name="player" parent="." instance=ExtResource("6_rtovy")]
+unique_name_in_owner = true
+position = Vector2(537, 2160)
+
+[node name="MmUi" parent="." instance=ExtResource("7_11g37")]
+offset_left = 342.0
+offset_top = 515.0
+offset_right = 342.0
+offset_bottom = 515.0
+scale = Vector2(4.65785, 4.65785)
